@@ -1,0 +1,27 @@
+# project waf (1.6.1) configured on Wed Nov  3 13:11:17 2010 by
+# waf 1.6.1 (abi 98, python 20606f0 on darwin)
+# using ./waf
+#
+----------------------------------------
+Setting top to
+/Users/gudbergur/Downloads/waf-1.6.1
+----------------------------------------
+Setting out to
+/Users/gudbergur/Downloads/waf-1.6.1/build
+----------------------------------------
+Checking for program python
+/opt/local/bin/python
+find program=['python'] paths=['/Applications/android-sdk-mac_86/tools', '/Library/PostgreSQL/8.4/bin', '/opt/local/bin', '/opt/local/sbin', '/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin', '/usr/local/git/bin', '/usr/texbin', '/usr/X11/bin', '/Applications/android-sdk-mac_x86/tools'] var='PYTHON' -> '/opt/local/bin/python'
+['/opt/local/bin/python', '-c', 'import sys\nfor x in sys.version_info: print(str(x))']
+out: 2
+6
+6
+final
+0
+
+['/opt/local/bin/python', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_python_lib(standard_lib=0, prefix='/usr/local')))"]
+out: '/usr/local/lib/python2.6/site-packages'
+
+----------------------------------------
+Checking for python version
+(2, 6, 6, 'final', 0)

@@ -1,0 +1,70 @@
+#! /usr/bin/env python
+# encoding: utf-8
+# Thomas Nagy, 2006-2010 (ita)
+
+# the following two variables are used by the target "waf dist"
+VERSION='0.0.1'
+APPNAME='cc_test'
+
+top = '.'
+
+import waflib.Configure
+waflib.Configure.autoconfig = True
+
+def options(opt):
+	opt.load('compiler_c')
+	opt.load('gnu_dirs')
+
+def configure(conf):
+	#conf.load('akakak')
+	conf.load('compiler_c')
+	#conf.load('gnu_dirs')
+	#conf.check_cfg(package='cppunit', uselib_store='UNIT', args='--cflags --libs')
+	conf.check_cc(fragment="int main() { return 0; }")
+	conf.check_cc(fragment="int main() { return 0; }", execute=True)
+	conf.check_cc(fragment="""#include<stdio.h>\nint main(){fprintf(stderr, "mu"); printf("%d", 22);return 0;}\n""", execute=True, define_name='HAVE_MU')
+
+	conf.check_large_file()
+	conf.check_inline()
+	conf.check_library()
+
+	conf.check_cc(header_name='stdio.h', auto_add_header_name=True)
+	#conf.check_cc(header_name='unistd.h')
+	conf.check_cc(fragment='int main() {return 0;}')
+
+	conf.write_config_header('config.h')
+
+def build(bld):
+	bld.env.DEFINES=['WAF=1']
+
+	bld.recurse('program stlib shlib')
+	#bld.install_files('/tmp/foo', 'wscript')
+	#bld.env.PREFIX='/tmp/foo'
+	bld.install_files('${PREFIX}/', 'program/a.h  program/main.c', relative_trick=False)
+	bld.install_as('${PREFIX}/gnigni.txt', 'wscript')
+	bld.symlink_as('${PREFIX}/libfoo.so', 'wscript')
+
+	bld.env.FOO =['m', 'ncurses']
+	bld.env.ST = '-L%s'
+	bld(rule='echo ${ST:FOO}', always=True, shell=1)
+
+	# illustrate how to add a command 'foo' and to execute things in it
+	if bld.cmd == 'foo':
+		def bar(bld):
+			print('myprogram exit status is',
+				bld.exec_command(bld.get_tgen_by_name('myprogram').link_task.outputs[0].abspath()))
+		bld.add_post_fun(bar)
+
+from waflib.Build import BuildContext
+class foo_class(BuildContext):
+	cmd = 'foo'
+
+from waflib.Context import Context
+class package_class(Context):
+	"""just a test, try calling 'waf package' """
+	cmd = 'package'
+	fun = 'package'
+
+def package(ctx):
+	print('just a test', ctx.path.ant_glob('wscript'))
+

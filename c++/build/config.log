@@ -1,0 +1,32 @@
+# project cxx_test (0.0.1) configured on Wed Nov  3 13:15:20 2010 by
+# waf 1.6.1 (abi 98, python 20606f0 on darwin)
+# using ../waf/waf configure
+#
+----------------------------------------
+Setting top to
+/Users/gudbergur/Dropbox/Skoli/Hugbúnaðarfræði/verkefni2/c++
+----------------------------------------
+Setting out to
+/Users/gudbergur/Dropbox/Skoli/Hugbúnaðarfræði/verkefni2/c++/build
+----------------------------------------
+Checking for 'g++' (c++ compiler)
+find program=['g++', 'c++'] paths=['/Applications/android-sdk-mac_86/tools', '/Library/PostgreSQL/8.4/bin', '/opt/local/bin', '/opt/local/sbin', '/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin', '/usr/local/git/bin', '/usr/texbin', '/usr/X11/bin', '/Applications/android-sdk-mac_x86/tools'] var='CXX' -> '/usr/bin/g++'
+find program=['ar'] paths=['/Applications/android-sdk-mac_86/tools', '/Library/PostgreSQL/8.4/bin', '/opt/local/bin', '/opt/local/sbin', '/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin', '/usr/local/git/bin', '/usr/texbin', '/usr/X11/bin', '/Applications/android-sdk-mac_x86/tools'] var='AR' -> '/usr/bin/ar'
+ok
+----------------------------------------
+Checking for header stdio.h
+==>
+#include <stdio.h>
+
+int main() {
+	return 0;
+}
+
+<==
+[1/2] [32mcxx: build/.conf_check_3a18c1bdcdda9cb2319920d5a60eddee/test.c -> build/.conf_check_3a18c1bdcdda9cb2319920d5a60eddee/testbuild/test.c.0.o
+[0m
+['/usr/bin/g++', '../test.c', '-c', '-o', 'test.c.0.o']
+[2/2] [33mcxxprogram: build/.conf_check_3a18c1bdcdda9cb2319920d5a60eddee/testbuild/test.c.0.o -> build/.conf_check_3a18c1bdcdda9cb2319920d5a60eddee/testbuild/testprog
+[0m
+['/usr/bin/g++', 'test.c.0.o', '-o', '/Users/gudbergur/Dropbox/Skoli/Hugbu\xcc\x81na\xc3\xb0arfr\xc3\xa6\xc3\xb0i/verkefni2/c++/build/.conf_check_3a18c1bdcdda9cb2319920d5a60eddee/testbuild/testprog']
+yes
